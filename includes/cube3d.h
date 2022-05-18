@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:59:22 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:43:48 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -21,8 +21,8 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define MAP_W 160
-# define MAP_H 160
+# define MAP_W 150
+# define MAP_H 150
 
 enum
 {
@@ -74,7 +74,6 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	int			start_dir;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	perp_dir;
@@ -85,6 +84,8 @@ typedef struct s_data
 	char		**map;
 }				t_data;
 
-int	arr_len(char **s);
+int		arr_len(char **s);
+void	normalize_vector(t_vector *dir, int len);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif
