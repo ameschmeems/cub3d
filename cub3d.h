@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:03:05 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:31:08 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "mlx/mlx.h"
+# include "libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
@@ -80,6 +81,7 @@ typedef struct s_data
 	t_vector	ray_dir;
 	t_img		map_img;
 	t_img		fps;
+	char		**map;
 }				t_data;
 
 #endif

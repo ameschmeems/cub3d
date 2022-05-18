@@ -14,7 +14,8 @@ all:		${NAME}
 		${CC} -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 ${NAME}:	${OBJS}
-		${CC} ${OBJS} -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+		@make -C ./libft
+		${CC} ${OBJS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 clean:
 		rm -f ${OBJS} ${FPS_OBJS}

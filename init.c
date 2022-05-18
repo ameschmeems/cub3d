@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:02:41 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:27:28 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	set_vectors(t_data *data)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 }
 
 t_data	*init(void)
