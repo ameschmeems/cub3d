@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:43:17 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:12 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,31 @@
 
 void	set_start_pos(t_data *data, int i, int j)
 {
+	if (data->map[i][j] == 'N')
+	{
+		data->dir.x = 0;
+		data->dir.y = 1;
+	}
+	else if (data->map[i][j] == 'S')
+	{
+		data->dir.x = 0;
+		data->dir.y = -1;
+	}
+	else if (data->map[i][j] == 'W')
+	{
+		data->dir.x = -1;
+		data->dir.y = 0;
+	}
+	else if (data->map[i][j] == 'E')
+	{
+		data->dir.x = 1;
+		data->dir.y = 0;
+	}
+	data->perp_dir.x = data->dir.y;
+	data->perp_dir.y = data->dir.x * -1;
+	data->plane.x = data->perp_dir.x;
+	data->plane.y = data->perp_dir.y;
+	normalize_vector(&data->plane, 0.66);
 }
 
 void	set_vectors(t_data *data)
@@ -27,9 +52,12 @@ void	set_vectors(t_data *data)
 	{
 		while (++j < ft_strlen(data->map[i]))
 		{
-			if (data->map[i] == 'N')
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' \
+				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
-				data->start_dir = FORWARD;
+				data->pos.x = j * 100;
+				data->pos.y = i * 100;
+				set_start_pos(data, i, j);
 			}
 		}
 	}
