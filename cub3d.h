@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:31:08 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:40:04 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	int			start_dir;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	perp_dir;
@@ -83,5 +84,7 @@ typedef struct s_data
 	t_img		fps;
 	char		**map;
 }				t_data;
+
+int	arr_len(char **s);
 
 #endif

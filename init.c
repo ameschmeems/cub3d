@@ -6,19 +6,33 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:27:28 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:43:17 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	set_start_pos(t_data *data, int i, int j)
+{
+}
 
 void	set_vectors(t_data *data)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
+	while (++i < arr_len(data->map))
+	{
+		while (++j < ft_strlen(data->map[i]))
+		{
+			if (data->map[i] == 'N')
+			{
+				data->start_dir = FORWARD;
+			}
+		}
+	}
 }
 
 t_data	*init(void)
