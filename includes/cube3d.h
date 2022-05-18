@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 15:43:48 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 18:52:50 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -79,13 +80,32 @@ typedef struct s_data
 	t_vector	perp_dir;
 	t_vector	plane;
 	t_vector	ray_dir;
+	t_vector	side_dist;
+	t_vector	delta_dist;
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
+	double		camera_x;
+	double		perp_wall_dist;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }				t_data;
 
 int		arr_len(char **s);
 void	normalize_vector(t_vector *dir, int len);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	draw_line(t_data *data, int x, unsigned int color);
+void	raycaster(t_data *data, int amount);
+t_data	*init(void);
+void	render(t_data *data);
+void	x_close(t_data *data);
+void	key_handler(int keycode, t_data *data);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:27:16 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 15:29:25 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:47:05 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cube3d.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {

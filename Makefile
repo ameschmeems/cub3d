@@ -1,12 +1,18 @@
 NAME	:=	cub3d
 
-SRCS	:=	src/main.c
+SRCS	:=	src/main.c \
+			src/engine/init.c \
+			src/engine/pixel_put.c \
+			src/engine/raycasting.c \
+			src/engine/rendering.c \
+			src/engine/utils.c \
+			src/engine/vectors.c
 
 OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	
+CFLAGS	:=	-Wall -Wextra - Werror
 
 all:		${NAME}
 

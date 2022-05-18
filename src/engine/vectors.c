@@ -6,11 +6,11 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:59:20 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 15:23:43 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:47:16 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cube3d.h"
 
 void	normalize_vector(t_vector *dir, double len)
 {
