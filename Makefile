@@ -1,17 +1,17 @@
 NAME	:=	cub3d
 
-SRCS	:=	main.c
+SRCS	:=	src/main.c
 
 OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	
 
 all:		${NAME}
 
 %.o: %.c
-		${CC} -Wall -Wextra -Werror -Imlx -c $< -o $@
+		${CC}  -Imlx -c $< -o $@
 
 ${NAME}:	${OBJS}
 		@make -C ./libft
