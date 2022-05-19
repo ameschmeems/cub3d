@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:21:24 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 18:40:39 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:07:52 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,15 @@ void	dda(t_data *data)
 		data->perp_wall_dist = data->side_dist.x - data->delta_dist.x;
 	else
 		data->perp_wall_dist = data->side_dist.y - data->delta_dist.y;
+	if (data->perp_wall_dist == 0)
+		data->perp_wall_dist = 1;
 }
 
 void	raycaster(t_data *data, int amount)
 {
 	int	i;
 	int	color;
+	int	num;
 
 	i = -1;
 	while (++i < amount)
@@ -103,6 +106,6 @@ void	raycaster(t_data *data, int amount)
 			color = 0x00FF0000;
 		else
 			color = 0x0000FF00;
-		draw_line(data, i, color);
+		draw_line(data, amount - i - 1, color);
 	}
 }

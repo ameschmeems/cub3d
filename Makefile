@@ -6,22 +6,24 @@ SRCS	:=	src/main.c \
 			src/engine/raycasting.c \
 			src/engine/rendering.c \
 			src/engine/utils.c \
-			src/engine/vectors.c
+			src/engine/vectors.c \
+			src/engine/collisions.c \
+			src/engine/event_handling.c
 
 OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	-Wall -Wextra - Werror
+CFLAGS	:=	-Wall -Wextra -g
 
 all:		${NAME}
 
 %.o: %.c
-		${CC}  -Imlx -c $< -o $@
+		${CC} ${CFLAGS} -Imlx -c $< -o $@
 
 ${NAME}:	${OBJS}
 		@make -C ./libft
-		${CC} ${OBJS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+		${CC} ${OBJS} ${CFLAGS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 clean:
 		rm -f ${OBJS} ${FPS_OBJS}

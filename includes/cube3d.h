@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 18:52:50 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/19 18:09:34 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_data
 }				t_data;
 
 int		arr_len(char **s);
-void	normalize_vector(t_vector *dir, int len);
+void	normalize_vector(t_vector *dir, double len);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	draw_line(t_data *data, int x, unsigned int color);
 void	raycaster(t_data *data, int amount);
@@ -107,5 +107,7 @@ t_data	*init(void);
 void	render(t_data *data);
 void	x_close(t_data *data);
 void	key_handler(int keycode, t_data *data);
+int		collision_detection(t_data *data, int state);
+int		out_of_bounds(t_data *data, int i, int j);
 
 #endif
