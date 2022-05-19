@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:59:22 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:32:10 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include "get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <stdbool.h>
+# include <fcntl.h>
+
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -83,8 +87,11 @@ typedef struct s_data
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
+	int			f_colour;
+	int			c_colour;
 }				t_data;
 
 int	arr_len(char **s);
-
+bool	get_map(t_data *data, char *path_name);
+bool	set_colour_f_and_c(char *line, t_data *data);
 #endif
