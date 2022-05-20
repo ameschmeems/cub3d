@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:24:54 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/20 15:03:51 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 18:12:43 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,20 @@ void	generate_minimap(t_data *data)
 	}
 }
 
-void	draw_line(t_data *data, int x, unsigned int color)
+void	draw_line(t_data *data, int x)
 {
 	int	i;
+	int	color;
 
 	i = -1;
 	while (++i < data->draw_start)
 		my_mlx_pixel_put(&data->fps, x, i, data->c_colour);
 	i = -1;
 	while (++i < data->draw_end - data->draw_start)
+	{
+		color = get_pixel(data, i);
 		my_mlx_pixel_put(&data->fps, x, data->draw_start + i, color);
+	}
 	i = -1;
 	while (++i < HEIGHT - data->draw_end)
 		my_mlx_pixel_put(&data->fps, x, i + data->draw_end, data->f_colour);

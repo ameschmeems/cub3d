@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:21:24 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/20 14:50:51 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:30:29 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,14 @@ void	raycaster(t_data *data, int amount)
 		data->draw_end = (data->line_height / 2 + HEIGHT / 2);
 		if (data->draw_end >= HEIGHT)
 			data->draw_end = HEIGHT - 1;
-		if (data->side == 0)
-			color = 0x00FF0000;
+		if (data->side == 0 && data->ray_dir.x > 0)
+			data->side = EAST;
+		else if (data->side == 0)
+			data->side = WEST;
+		else if (data->side == 1 && data->ray_dir.y > 0)
+			data->side = SOUTH;
 		else
-			color = 0x0000FF00;
-		draw_line(data, amount - i - 1, color);
+			data->side = NORTH;
+		draw_line(data, amount - i - 1);
 	}
 }
