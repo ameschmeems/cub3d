@@ -31,7 +31,7 @@
 int main(int argc, char **argv)
 {
 	t_data data;
-	if (get_map(&data, argv[1]))
+	if (get_input(&data, argv[1]))
 		printf("true\n");
 	else
 		printf("false\n");

@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 18:32:10 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:08:20 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,13 @@ typedef struct s_data
 	char		**map;
 	int			f_colour;
 	int			c_colour;
+	void		*place_holder_north;
+	void		*place_holder_east;
+	void		*place_holder_south;
+	void		*place_holder_west;
 }				t_data;
 
 int	arr_len(char **s);
-bool	get_map(t_data *data, char *path_name);
+bool	get_input(t_data *data, char *path_name);
 bool	set_colour_f_and_c(char *line, t_data *data);
 #endif
