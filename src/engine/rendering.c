@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:24:54 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/19 18:16:06 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 15:03:51 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	generate_minimap(t_data *data)
 	j = -1;
 	data->map_x = ((data->pos.x - 800) / 100);
 	data->map_y = ((data->pos.y - 800) / 100);
-	while (++i < 16)
+	while (++i < 15)
 	{
 		while (++j < 15)
 		{
@@ -64,13 +64,13 @@ void	draw_line(t_data *data, int x, unsigned int color)
 
 	i = -1;
 	while (++i < data->draw_start)
-		my_mlx_pixel_put(&data->fps, x, i, 0x0000008B);
+		my_mlx_pixel_put(&data->fps, x, i, data->c_colour);
 	i = -1;
 	while (++i < data->draw_end - data->draw_start)
 		my_mlx_pixel_put(&data->fps, x, data->draw_start + i, color);
 	i = -1;
 	while (++i < HEIGHT - data->draw_end)
-		my_mlx_pixel_put(&data->fps, x, i + data->draw_end, 0x002C2C2C);
+		my_mlx_pixel_put(&data->fps, x, i + data->draw_end, data->f_colour);
 }
 
 void	render(t_data *data)

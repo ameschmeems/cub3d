@@ -14,7 +14,7 @@ OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	-Wall -Wextra -g
+CFLAGS	:=	-Wall -Wextra -Wextra
 
 all:		${NAME}
 
@@ -26,9 +26,11 @@ ${NAME}:	${OBJS}
 		${CC} ${OBJS} ${CFLAGS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 clean:
+		@make -C ./libft clean
 		rm -f ${OBJS} ${FPS_OBJS}
 
 fclean:		clean
+		@make -C ./libft fclean
 		rm -f ${NAME} ${FPS_NAME}
 
 re:			fclean all

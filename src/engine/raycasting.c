@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:21:24 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/19 17:07:52 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:50:51 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	raycaster(t_data *data, int amount)
 {
 	int	i;
 	int	color;
-	int	num;
 
 	i = -1;
 	while (++i < amount)

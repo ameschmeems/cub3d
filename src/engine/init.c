@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/19 17:44:14 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:51:31 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	set_vectors(t_data *data)
 	j = -1;
 	while (++i < arr_len(data->map))
 	{
-		while (++j < ft_strlen(data->map[i]))
+		while (++j < (int)ft_strlen(data->map[i]))
 		{
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' \
 				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
@@ -67,7 +67,7 @@ void	set_vectors(t_data *data)
 char	**testing_map(void)
 {
 	char **map;
-	char *line;
+	// char *line;
 	int		i;
 
 	i = 0;

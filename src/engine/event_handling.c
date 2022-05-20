@@ -6,14 +6,17 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:46:51 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/19 16:46:35 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:56:44 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-void	x_close(t_data *data)
+int	x_close(void *ptr)
 {
+	t_data	*data;
+	
+	data = (t_data *)ptr;
 	mlx_destroy_window(data->mlx, data->win);
 	//additional cleanup
 	exit(0);
@@ -70,8 +73,11 @@ void	rotation(int keycode, t_data *data)
 	normalize_vector(&data->plane, 0.66);
 }
 
-void	key_handler(int keycode, t_data *data)
+int	key_handler(int keycode, void *ptr)
 {
+	t_data	*data;
+
+	data = (t_data *)ptr;
 	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(data->mlx, data->win);
@@ -81,4 +87,5 @@ void	key_handler(int keycode, t_data *data)
 	movement(keycode, data);
 	rotation(keycode, data);
 	render(data);
+	return (0);
 }
