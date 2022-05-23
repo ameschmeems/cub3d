@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/21 20:23:39 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/23 22:58:06 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
+typedef struct s_xpm_data
+{
+	int		size;
+	int		colours;
+	int		cpp;
+	char	**code;
+	int		*value;
+}	t_xpm_data;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -93,14 +102,18 @@ typedef struct s_data
 	int			east_size;
 	int			south_size;
 	int			west_size;
-	int 		*place_holder_east;
-	void		*place_holder_south;
-	void		*place_holder_west;	
-	void		*place_holder_north;
+	int 		**place_holder_east;
+	int		**place_holder_south;
+	int		**place_holder_west;	
+	int		**place_holder_north;
 
 }				t_data;
 
-int	arr_len(char **s);
+int		arr_len(char **s);
 bool	get_input(t_data *data, char *path_name);
 bool	set_colour_f_and_c(char *line, t_data *data);
+bool	error_message_bool(char *line);
+void	print_2d_array(char	**arr, int fd);
+void	free_2d_array(char	**arr);
+int		u_hextoi(char	*hex);
 #endif
