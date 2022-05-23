@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:46:51 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 13:11:47 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 17:48:38 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	x_close(void *ptr)
 
 	data = (t_data *)ptr;
 	mlx_destroy_window(data->mlx, data->win);
-	//additional cleanup
 	exit(0);
 }
 
@@ -81,7 +80,6 @@ int	key_handler(int keycode, void *ptr)
 	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(data->mlx, data->win);
-		//additional cleanup
 		exit(0);
 	}
 	movement(keycode, data);

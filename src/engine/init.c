@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 14:19:47 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:46:58 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,6 @@ void	set_vectors(t_data *data)
 	}
 }
 
-char	**testing_map(void)
-{
-	char	**map;
-	int		i;
-
-	i = 0;
-	map = calloc(sizeof(char *), 15);
-	map[0] = ft_strdup("111111111 11111");
-	map[1] = ft_strdup("100000001110001");
-	map[2] = ft_strdup("100000000000001");
-	map[3] = ft_strdup("100000011110001");
-	map[4] = ft_strdup("100000011110001");
-	map[5] = ft_strdup("100000011110001");
-	map[6] = ft_strdup("100000000000001");
-	map[7] = ft_strdup("100000010000111");
-	map[8] = ft_strdup("1000000000001  ");
-	map[9] = ft_strdup("100000000000111");
-	map[10] = ft_strdup("100110000000001");
-	map[11] = ft_strdup("100110000000001");
-	map[12] = ft_strdup("100000N00001111");
-	map[13] = ft_strdup("100000000000001");
-	map[14] = ft_strdup("111111111111111");
-	return (map);
-}
-
 t_data	*init(void)
 {
 	t_data	*data;
@@ -105,37 +80,6 @@ t_data	*init(void)
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
 	//map here maybe
-	data->place_holder_east = malloc(sizeof(int *) * 4);
-	data->place_holder_east[0] = malloc(sizeof(int) * 4);
-	data->place_holder_east[1] = malloc(sizeof(int) * 4);
-	data->place_holder_east[2] = malloc(sizeof(int) * 4);
-	data->place_holder_east[3] = malloc(sizeof(int) * 4);
-	data->place_holder_east[0][0] = 0x00FF0000;
-	data->place_holder_east[0][1] = 0x00FF0000;
-	data->place_holder_east[0][2] = 0x00FF0000;
-	data->place_holder_east[0][3] = 0x00FF0000;
-	data->place_holder_east[1][0] = 0x00FF0000;
-	data->place_holder_east[1][1] = 0x00000000;
-	data->place_holder_east[1][2] = 0x00000000;
-	data->place_holder_east[1][3] = 0x00FF0000;
-	data->place_holder_east[2][0] = 0x00FF0000;
-	data->place_holder_east[2][1] = 0x00000000;
-	data->place_holder_east[2][2] = 0x00000000;
-	data->place_holder_east[2][3] = 0x00FF0000;
-	data->place_holder_east[3][0] = 0x00FF0000;
-	data->place_holder_east[3][1] = 0x00FF0000;
-	data->place_holder_east[3][2] = 0x00FF0000;
-	data->place_holder_east[3][3] = 0x00FF0000;
-	data->c_colour = 0x000000FF;
-	data->f_colour = 0x002C2C2C;
-	data->place_holder_north = data->place_holder_east;
-	data->place_holder_west = data->place_holder_east;
-	data->place_holder_south = data->place_holder_east;
-	data->east_size = 4;
-	data->west_size = 4;
-	data->south_size = 4;
-	data->north_size = 4;
-	data->map = testing_map();
 	set_vectors(data);
 	return (data);
 }

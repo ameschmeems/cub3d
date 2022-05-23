@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 13:27:31 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:35:22 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_data
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
+	int			prev_start;
 	int			pixel_x;
 	int			pixel_y;
 	int			rev;

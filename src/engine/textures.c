@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:34:29 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 14:24:23 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:43:07 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	read_from_texture(t_data *data, int **tex, int i, int size)
 	percentage /= 100;
 	if (data->rev)
 		percentage = 1 - percentage;
-	data->pixel_y = (int)((size) * i / data->line_height);
-	data->pixel_x = (int)(percentage * (size));
+	data->pixel_y = (int)(size * i / data->line_height);
+	data->pixel_x = (int)(percentage * size);
 	color = tex[data->pixel_y][data->pixel_x];
 	return (color);
 }
@@ -34,10 +34,12 @@ int	get_pixel(t_data *data, int i)
 {
 	int	color;
 
-	data->v.x = data->perp_wall_dist * data->ray_dir.x + data->pos.x;
-	data->v.y = data->perp_wall_dist * data->ray_dir.y + data->pos.y;
+	data->v.x = (data->perp_wall_dist) * data->ray_dir.x + data->pos.x;
+	data->v.y = (data->perp_wall_dist) * data->ray_dir.y + data->pos.y;
+	if (data->prev_start < 0)
+		i -= data->prev_start;
 	if (data->side == SOUTH || data->side == WEST)
-		data->rev = 0;
+		data->rev = 1;
 	else
 		data->rev = 0;
 	if (data->side == NORTH)

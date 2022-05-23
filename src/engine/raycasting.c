@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:21:24 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 14:21:09 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:43:46 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ void	dda(t_data *data)
 void	raycaster(t_data *data, int amount)
 {
 	int	i;
-	int	color;
 
 	i = -1;
 	while (++i < amount)
 	{
 		init_ray(data, i, amount);
 		dda(data);
-		data->line_height = (int)(HEIGHT / (data->perp_wall_dist / 60));
+		data->line_height = (int)(HEIGHT / (data->perp_wall_dist / 100));
 		data->draw_start = (-data->line_height / 2 + HEIGHT / 2);
+		data->prev_start = data->draw_start;
 		if (data->draw_start < 0)
 			data->draw_start = 0;
 		data->draw_end = (data->line_height / 2 + HEIGHT / 2);
