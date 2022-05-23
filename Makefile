@@ -8,13 +8,14 @@ SRCS	:=	src/main.c \
 			src/engine/utils.c \
 			src/engine/vectors.c \
 			src/engine/collisions.c \
-			src/engine/event_handling.c
+			src/engine/event_handling.c \
+			src/engine/textures.c
 
 OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	-Wall -Wextra -Wextra
+CFLAGS	:=	-Wall -Wextra -Wextra -O3
 
 all:		${NAME}
 

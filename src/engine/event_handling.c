@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:46:51 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/20 14:56:44 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:11:47 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	x_close(void *ptr)
 {
 	t_data	*data;
-	
+
 	data = (t_data *)ptr;
 	mlx_destroy_window(data->mlx, data->win);
 	//additional cleanup
