@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/23 23:08:55 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 00:06:15 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,30 @@ void	free_2d_int_array(int **arr, int size)
 	free(arr);
 }
 
+void	distribute_into_struct(char c, int size, int **arr, t_data *data)
+{
+	if (c == 'N')
+	{
+		data->north_size = size;
+		data->place_holder_north = arr;
+	}
+	else if (c == 'E')
+	{
+		data->east_size = size;
+		data->place_holder_east = arr;
+	}
+	else if (c == 'S')
+	{
+		data->south_size = size;
+		data->place_holder_south = arr;
+	}
+	else if (c == 'W')
+	{
+		data->west_size = size;
+		data->place_holder_west = arr;
+	}
+}
+
 bool	xpm_to_int_arr(char *path, char c, t_data *data)
 {
 	int			fd;
@@ -162,12 +186,13 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 		return(error_message_bool(path + 2));
 	line = skip_lines_xpm(fd);
 	fill_texture_size(line, &text_data);
+	if (text_data.size == -1)
+		return (false);
 	fill_var_arrays(&text_data, fd);
 	arr = fill_texture_array(&text_data, data, fd);
 	free_2d_array(text_data.code);
 	free(text_data.value);
-	data->north_size = text_data.size;
-	data->place_holder_north = arr;
+	distribute_into_struct(c, text_data.size, arr, data);
 	return (true);
 }
 
