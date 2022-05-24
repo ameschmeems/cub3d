@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/18 18:20:42 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:29:08 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,8 @@ bool	check_for_surround_horizontal(char **map, int x, int y)
 	}
 	return (true);
 }
+
+// bool	check_for_illegal_characters(char **map, int x, int y)
+// {
+	
+// }

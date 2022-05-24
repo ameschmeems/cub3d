@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/24 00:06:15 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:57:50 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,17 @@ void	distribute_into_struct(char c, int size, int **arr, t_data *data)
 	}
 }
 
+char	*get_xpm_path(char *path)
+{
+	int	i;
+
+	path += 2;
+	while (path[0] == ' ')
+		path++;
+	path[ft_strlen(path) - 1] = 0;
+	return (path);
+}
+
 bool	xpm_to_int_arr(char *path, char c, t_data *data)
 {
 	int			fd;
@@ -181,6 +192,8 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	t_xpm_data	text_data;
 	int			**arr;
 
+	path = get_xpm_path(path);
+	
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return(error_message_bool(path + 2));
@@ -196,10 +209,10 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	return (true);
 }
 
-int main()
-{
-	int **arr;
-	t_data data;
-	xpm_to_int_arr("./test.xpm", 'N', &data);
-	free_2d_int_array(data.place_holder_north, data.north_size);
-}
+// int main()
+// {
+// 	int **arr;
+// 	t_data data;
+// 	xpm_to_int_arr("./test.xpm", 'N', &data);
+// 	free_2d_int_array(data.place_holder_north, data.north_size);
+// }
