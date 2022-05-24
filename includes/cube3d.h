@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/24 15:17:23 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:18:42 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_data
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
+	int			rows;
+	int			columns;
 	int			f_colour;
 	int			c_colour;
 	int			north_size;

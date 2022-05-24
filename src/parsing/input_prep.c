@@ -105,7 +105,7 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 	return (out);
 }
 
-void	fill_map_with_spaces(char **map)
+int	fill_map_with_spaces(char **map)
 {
 	int	x;
 	int	i;
@@ -167,7 +167,8 @@ bool	read_map(int fd, t_data *data)
 	}
 	fill_map_with_spaces(map);
 	
-	check_ma
+	check_for_surround_horizontal(map, );
+	check_for_surround_vertical();
 	printf("map:%p\n", map[0]);
 	print_map(map, 1);
 	data->map = map;
