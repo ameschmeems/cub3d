@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 15:35:22 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/24 13:42:24 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_data
 	t_vector	ray_dir;
 	t_vector	side_dist;
 	t_vector	delta_dist;
-	t_vector 	v;
+	t_vector	v;
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
