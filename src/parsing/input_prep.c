@@ -53,7 +53,8 @@ bool	read_input_file(t_data *data, int fd)
 		}
 		else if (line[0] == 'F' || line[0] == 'C')
 		{
-			set_colour_f_and_c(line, data);
+			if (set_colour_f_and_c(line, data)  == false)
+				return (false);
 			i++;
 		}
 		else if (ft_strlen(line) > 1)

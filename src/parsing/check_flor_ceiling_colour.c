@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 20:11:05 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:27:13 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	get_colour(char *line)
 		j = i;
 		while (ft_isdigit(line[i]))
 			i++;
-		if (i - j - 1> 2)
+		if (i - j - 1 > 2)
 			return (false);
 		temp = ft_substr(line, j, i - j);
 		rgb = (ft_atoi(temp) * pow(256, y)) + rgb;
@@ -99,26 +99,21 @@ int	get_colour(char *line)
 	return (rgb);
 }
 
-
 bool	set_colour_f_and_c(char *line, t_data *data)
 {
 	if (line[0] == 'F')
 	{
-		if(!check_rgb_line(line))
-			return (false);
+		if (check_rgb_line(line) == false)
+			return(error_message_bool("Floor colour is not formatted right!\n",false));
 		data->f_colour = get_colour(line);
 	}
 	else if (line[0] == 'C')
 	{
-		if(!check_rgb_line(line))
-			return (false);
+		if (check_rgb_line(line) == false)
+			return(error_message_bool("Ceiling colour is not formatted right!\n",false));
 		data->c_colour = get_colour(line);
 	}
-	if (data->c_colour < 0)
-		write(STDERR_FILENO, "Error!\n Ceiling colour isn't formatted right!\n", 47);
-	if (data->f_colour < 0)
-		write(STDERR_FILENO, "Error!\n Floor colour isn't formatted right!\n", 45);
 	if (data->c_colour < 0 || data->f_colour < 0)
 		return (false);
-	return(true);
+	return (true);
 }
