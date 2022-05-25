@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:27:13 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:31:02 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,15 @@ bool	set_colour_f_and_c(char *line, t_data *data)
 	if (line[0] == 'F')
 	{
 		if (check_rgb_line(line) == false)
-			return(error_message_bool("Floor colour is not formatted right!\n",false));
+			return (error_message_bool("Floor colour is\
+			 not formatted right!\n", false));
 		data->f_colour = get_colour(line);
 	}
 	else if (line[0] == 'C')
 	{
 		if (check_rgb_line(line) == false)
-			return(error_message_bool("Ceiling colour is not formatted right!\n",false));
+			return (error_message_bool("Ceiling colour\
+			 is not formatted right!\n", false));
 		data->c_colour = get_colour(line);
 	}
 	if (data->c_colour < 0 || data->f_colour < 0)
