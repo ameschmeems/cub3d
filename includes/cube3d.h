@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/24 15:22:19 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:10:44 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_data
 int		arr_len(char **s);
 bool	get_input(t_data *data, char *path_name);
 bool	set_colour_f_and_c(char *line, t_data *data);
-bool	error_message_bool(char *line);
+bool	error_message_bool(char *line, bool perror);
 void	print_2d_array(char	**arr, int fd);
 void	free_2d_array(char	**arr);
 int		u_hextoi(char	*hex);

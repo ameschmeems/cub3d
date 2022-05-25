@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/24 13:57:50 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:10:03 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return(error_message_bool(path + 2));
+		return(error_message_bool(path + 2, true));
 	line = skip_lines_xpm(fd);
 	fill_texture_size(line, &text_data);
 	if (text_data.size == -1)

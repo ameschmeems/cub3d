@@ -6,13 +6,13 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/24 15:45:29 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 13:44:18 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-bool	check_for_surround_vertical(char **map)
+bool	check_for_surround_horizontal(char **map)
 {
 	int	y_c;
 	int	x_c;
@@ -46,7 +46,7 @@ bool	check_for_surround_vertical(char **map)
 	return (true);
 }
 
-bool	check_for_surround_horizontal(char **map)
+bool	check_for_surround_vertical(char **map)
 {
 	int	y_c;
 	int	x_c;
@@ -59,7 +59,7 @@ bool	check_for_surround_horizontal(char **map)
 		{
 			while (map[y_c] && map[y_c][x_c] == ' ')
 				y_c++;
-			if (map[y_c])
+			if (map[y_c] == NULL)
 				break ;
 			if (map[y_c][x_c] != '1')
 				return (false);
