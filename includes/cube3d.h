@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/24 13:42:24 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:10:44 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include "get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <stdbool.h>
+# include <fcntl.h>
+
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -79,6 +83,15 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+typedef struct s_xpm_data
+{
+	int		size;
+	int		colours;
+	int		cpp;
+	char	**code;
+	int		*value;
+}	t_xpm_data;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -134,4 +147,15 @@ int		collision_detection(t_data *data, int state);
 int		out_of_bounds(t_data *data, int i, int j);
 int		get_pixel(t_data *data, int i);
 
+int		arr_len(char **s);
+bool	get_input(t_data *data, char *path_name);
+bool	set_colour_f_and_c(char *line, t_data *data);
+bool	error_message_bool(char *line, bool perror);
+void	print_2d_array(char	**arr, int fd);
+void	free_2d_array(char	**arr);
+int		u_hextoi(char	*hex);
+bool	xpm_to_int_arr(char *path, char c, t_data *data);
+void	print_2d_int_array(int **arr, int size);
+bool	check_for_surround_vertical(char **map);
+bool	check_for_surround_horizontal(char **map);
 #endif
