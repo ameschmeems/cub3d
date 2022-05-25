@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 15:46:58 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:54:30 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,29 @@ void	set_vectors(t_data *data)
 	}
 }
 
+bool	check_player_start(char **map)
+{
+	int	i;
+	int	j;
+	int	p_count;
+
+	i = -1;
+	p_count = 0;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'W' || \
+				map[i][j] == 'E' || map[i][j] == 'S')
+				p_count++;
+		}
+	}
+	if (p_count != 1)
+		return (false);
+	return (true);
+}
+
 t_data	*init(void)
 {
 	t_data	*data;
@@ -80,6 +103,11 @@ t_data	*init(void)
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
 	//map here maybe
+	if (!check_player_start(data->map))
+	{
+		error_message_bool("Invalid amount of player positions", false);
+		exit(0);
+	}
 	set_vectors(data);
 	return (data);
 }
