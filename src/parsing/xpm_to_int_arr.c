@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 14:10:03 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:37:36 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	fill_texture_size(char *line, t_xpm_data *data)
 	data->cpp = ft_atoi(arr[3]);
 	free_2d_array(arr);
 	free(line);
-	data->code = malloc(sizeof(char	*) * data->colours);
-	data->value = malloc(sizeof(int) * data->colours);
+	data->code = ft_calloc(sizeof(char	*), data->colours + 1);
+	data->value = ft_calloc(sizeof(int), data->colours +1 );
 }
 
 void	fill_var_arrays(t_xpm_data *data, int fd)
@@ -193,7 +193,7 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	int			**arr;
 
 	path = get_xpm_path(path);
-	
+	printf("XDLOL\n");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return(error_message_bool(path + 2, true));
@@ -203,8 +203,9 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 		return (false);
 	fill_var_arrays(&text_data, fd);
 	arr = fill_texture_array(&text_data, data, fd);
-	free_2d_array(text_data.code);
+	printf("%p\n", text_data.value);
 	free(text_data.value);
+	free_2d_array(text_data.code);
 	distribute_into_struct(c, text_data.size, arr, data);
 	return (true);
 }

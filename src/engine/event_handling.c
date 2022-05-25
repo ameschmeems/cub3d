@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:46:51 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/23 17:48:38 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:47:31 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	x_close(void *ptr)
 	t_data	*data;
 
 	data = (t_data *)ptr;
-	mlx_destroy_window(data->mlx, data->win);
+	free_stuff(data);
 	exit(0);
 }
 
@@ -25,23 +25,23 @@ void	movement(int keycode, t_data *data)
 {
 	if (keycode == K_W && !collision_detection(data, FORWARD))
 	{
-		data->pos.x += 5 * data->dir.x;
-		data->pos.y += 5 * data->dir.y;
+		data->pos.x += 10 * data->dir.x;
+		data->pos.y += 10 * data->dir.y;
 	}
 	if (keycode == K_S && !collision_detection(data, BACK))
 	{
-		data->pos.x -= 5 * data->dir.x;
-		data->pos.y -= 5 * data->dir.y;
+		data->pos.x -= 10 * data->dir.x;
+		data->pos.y -= 10 * data->dir.y;
 	}
 	if (keycode == K_A && !collision_detection(data, LEFT))
 	{
-		data->pos.x += 5 * data->perp_dir.x;
-		data->pos.y += 5 * data->perp_dir.y;
+		data->pos.x += 10 * data->perp_dir.x;
+		data->pos.y += 10 * data->perp_dir.y;
 	}
 	if (keycode == K_D && !collision_detection(data, RIGHT))
 	{
-		data->pos.x -= 5 * data->perp_dir.x;
-		data->pos.y -= 5 * data->perp_dir.y;
+		data->pos.x -= 10 * data->perp_dir.x;
+		data->pos.y -= 10 * data->perp_dir.y;
 	}
 }
 
@@ -79,7 +79,7 @@ int	key_handler(int keycode, void *ptr)
 	data = (t_data *)ptr;
 	if (keycode == K_ESC)
 	{
-		mlx_destroy_window(data->mlx, data->win);
+		free_stuff(data);
 		exit(0);
 	}
 	movement(keycode, data);

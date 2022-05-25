@@ -57,7 +57,11 @@ bool	read_input_file(t_data *data, int fd)
 		}
 		else if (ft_strlen(line) > 1)
 			return (false);
+		printf("here1\n");
+		printf("here1\n");
+		usleep(5);
 		free(line);
+		printf("after1\n");
 		line = get_next_line(fd);
 	}
 	if (i != 6)
@@ -82,7 +86,10 @@ char **add_after_string(char **arr, char *new_el)
 		j++;
 	}
 	temp[j] = new_el;
-	free(arr);
+
+	printf("here2\n");
+		free(arr);
+	printf("after2\n");
 	return (temp);
 }
 
@@ -132,7 +139,9 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 		i = ft_strlen(out) - 1;
 		while (i < size)
 			out[i++] = ' ';
+		printf("here3\n");
 		free(line);
+		printf("after3\n");
 		return(out);
 	}
 }
@@ -211,7 +220,9 @@ bool	read_map(int fd, t_data *data)
 	map = ft_calloc(sizeof(char *), 1);
 	while (line && ft_strlen(line) == 1)
 	{
+		printf("here4\n");
 		free(line);
+		printf("after4\n");
 		line = get_next_line(fd);
 	}
 	while (line)
@@ -238,10 +249,7 @@ bool	get_input(t_data *data, char *path_name)
 
 	fd = open(path_name, O_RDONLY);
 	if (fd < 0)
-	{
-
-		return (false);
-	}
+		return (error_message_bool(path_name, true));
 	if (read_input_file(data, fd) == false)
 		return (error_message_bool("cub file not properly formated!\n", false));
 	// get_map();

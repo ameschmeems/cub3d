@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 14:10:44 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:12:15 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	normalize_vector(t_vector *dir, double len);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	draw_line(t_data *data, int x);
 void	raycaster(t_data *data, int amount);
-t_data	*init(void);
+t_data	*init(char *path);
 void	render(t_data *data);
 int		x_close(void *ptr);
 int		key_handler(int keycode, void *ptr);
@@ -158,4 +158,6 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data);
 void	print_2d_int_array(int **arr, int size);
 bool	check_for_surround_vertical(char **map);
 bool	check_for_surround_horizontal(char **map);
+void	free_stuff(t_data *data);
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 14:54:30 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:14:26 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	set_vectors(t_data *data)
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' \
 				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
-				data->pos.x = j * 100;
-				data->pos.y = i * 100;
+				data->pos.x = j * 100 + 50;
+				data->pos.y = i * 100 + 50;
 				set_start_pos(data, i, j);
 			}
 		}
@@ -87,7 +87,29 @@ bool	check_player_start(char **map)
 	return (true);
 }
 
-t_data	*init(void)
+void	free_image_arr(int **array, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+		free(array[i]);
+	free(array);
+}
+
+void	free_stuff(t_data *data)
+{
+	free_2d_array(data->map);
+	free_image_arr(data->place_holder_east, data->east_size);
+	free_image_arr(data->place_holder_west, data->west_size);
+	free_image_arr(data->place_holder_south, data->south_size);
+	free_image_arr(data->place_holder_north, data->north_size);
+	mlx_destroy_image(data->mlx, data->map_img.img);
+	mlx_destroy_image(data->mlx, data->fps.img);
+	mlx_destroy_window(data->mlx, data->win);
+}
+
+t_data	*init(char *path)
 {
 	t_data	*data;
 
@@ -103,9 +125,16 @@ t_data	*init(void)
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
 	//map here maybe
+	printf("here\n");
+	if (get_input(data, path) == false)
+	{
+		return(NULL);
+	}
+	printf("after\n");
 	if (!check_player_start(data->map))
 	{
 		error_message_bool("Invalid amount of player positions", false);
+		free_stuff(data);
 		exit(0);
 	}
 	set_vectors(data);
