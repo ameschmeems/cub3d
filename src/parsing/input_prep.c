@@ -25,6 +25,7 @@ int	read_input_file(t_data *data, int fd)
 		{
 			if (xpm_to_int_arr(l, l[0], data) == false)
 				return (false);
+			}
 			i++;
 		}
 		else if (l[0] == 'F' || l[0] == 'C')
