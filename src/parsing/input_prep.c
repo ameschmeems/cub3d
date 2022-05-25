@@ -105,7 +105,7 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 	return (out);
 }
 
-int	fill_map_with_spaces(char **map)
+void	fill_map_with_spaces(char **map)
 {
 	int	x;
 	int	i;
@@ -167,10 +167,15 @@ bool	read_map(int fd, t_data *data)
 	}
 	fill_map_with_spaces(map);
 	
-	check_for_surround_horizontal(map, );
-	check_for_surround_vertical();
-	printf("map:%p\n", map[0]);
 	print_map(map, 1);
+	printf("hi0\n");
+	if (check_for_surround_vertical(map) == false)
+		return (false);
+	printf("hi1\n");
+	if (check_for_surround_horizontal(map) == false)
+		return (false);
+	printf("hi12\n");
+	printf("map:%p\n", map[0]);
 	data->map = map;
 	return true;
 }
@@ -200,8 +205,13 @@ bool	get_input(t_data *data, char *path_name)
 	// print_2d_int_array(data->place_holder_west, data->west_size);
 	// print_2d_int_array(data->place_holder_east, data->east_size);
 	// print_2d_int_array(data->place_holder_south, data->north_size);
-	read_map(fd, data);
-	print_map(data->map, 1);
+	if (read_map(fd, data) == false)
+	{
+		printf("read map == false\n");
+	}else
+		printf("read map == true\n");
+
+	// print_map(data->map, 1);
 
 
 

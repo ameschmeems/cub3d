@@ -6,57 +6,64 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/24 15:20:16 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:45:29 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-bool	check_for_surround_vertical(char **map, int x, int y)
+bool	check_for_surround_vertical(char **map)
 {
 	int	y_c;
 	int	x_c;
 
 	y_c = 0;
-	while (y_c < y)
+	while (map[y_c])
 	{
 		x_c = 0;
-		while (x_c < x)
+		while (map[y_c][x_c])
 		{
 			while (map[y_c][x_c] == ' ' && map[y_c][x_c] != 0)
 				x_c++;
 			if (map[y_c][x_c] == 0)
 				break ;
 			if (map[y_c][x_c] != '1')
+			{
+				printf("hello '%s'", map[y_c]);
+				printf("case 1: %d %d\n", x_c, y_c);
 				return (false);
+			}
 			while (map[y_c][x_c] != ' ' && map[y_c][x_c] != 0)
 				x_c++;
 			if (map[y_c][x_c - 1] != '1')
-				return (false);
+			{
+				printf("case 2: %d %d\n", x_c, y_c);
+					return (false);
+			}
 		}
 		y_c++;
 	}
 	return (true);
 }
 
-bool	check_for_surround_horizontal(char **map, int x, int y)
+bool	check_for_surround_horizontal(char **map)
 {
 	int	y_c;
 	int	x_c;
 
 	x_c = 0;
-	while (x_c < x)
+	while (map[0][x_c] != 0)
 	{
 		y_c = 0;
-		while (y_c < y)
+		while (map[y_c] != NULL)
 		{
-			while (y_c != y && map[y_c][x_c] == ' ')
+			while (map[y_c] && map[y_c][x_c] == ' ')
 				y_c++;
-			if (y_c == y)
+			if (map[y_c])
 				break ;
 			if (map[y_c][x_c] != '1')
 				return (false);
-			while (y_c != y && map[y_c][x_c] != ' ')
+			while (map[y_c] && map[y_c][x_c] != ' ')
 				y_c++;
 			if (map[y_c - 1][x_c] != '1')
 				return (false);

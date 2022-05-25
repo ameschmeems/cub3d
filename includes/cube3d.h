@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/24 15:18:42 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:22:19 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ typedef struct s_data
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
-	int			rows;
-	int			columns;
 	int			f_colour;
 	int			c_colour;
 	int			north_size;
@@ -120,6 +118,6 @@ void	free_2d_array(char	**arr);
 int		u_hextoi(char	*hex);
 bool	xpm_to_int_arr(char *path, char c, t_data *data);
 void	print_2d_int_array(int **arr, int size);
-bool	check_for_surround_vertical(char **map, int x, int y);
-bool	check_for_surround_horizontal(char **map, int x, int y);
+bool	check_for_surround_vertical(char **map);
+bool	check_for_surround_horizontal(char **map);
 #endif
