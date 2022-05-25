@@ -47,7 +47,8 @@ bool	read_input_file(t_data *data, int fd)
 	{
 		if (line[0] == 'N' || line[0] == 'E' || line[0] == 'S' || line[0] == 'W')
 		{
-			xpm_to_int_arr(line, line[0], data);
+			if (xpm_to_int_arr(line, line[0], data) == false)
+				return (false);
 			i++;
 		}
 		else if (line[0] == 'F' || line[0] == 'C')
@@ -57,11 +58,8 @@ bool	read_input_file(t_data *data, int fd)
 		}
 		else if (ft_strlen(line) > 1)
 			return (false);
-		printf("here1\n");
-		printf("here1\n");
 		usleep(5);
 		free(line);
-		printf("after1\n");
 		line = get_next_line(fd);
 	}
 	if (i != 6)
@@ -86,10 +84,7 @@ char **add_after_string(char **arr, char *new_el)
 		j++;
 	}
 	temp[j] = new_el;
-
-	printf("here2\n");
-		free(arr);
-	printf("after2\n");
+	free(arr);
 	return (temp);
 }
 
@@ -121,12 +116,12 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 	char	*out;
 	int		i;
 
-	if (ft_strlen(line) > size)
+	if ((int)ft_strlen(line) > size)
 	{
 		line[size] = 0;
 		return (line);
 	}
-	 else if (ft_strlen(line) == size)
+	else if ((int)ft_strlen(line) == size)
 	{
 		line[size -1] = ' ';
 		line[size -1] = '\0';
@@ -139,9 +134,7 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 		i = ft_strlen(out) - 1;
 		while (i < size)
 			out[i++] = ' ';
-		printf("here3\n");
 		free(line);
-		printf("after3\n");
 		return(out);
 	}
 }
@@ -220,9 +213,7 @@ bool	read_map(int fd, t_data *data)
 	map = ft_calloc(sizeof(char *), 1);
 	while (line && ft_strlen(line) == 1)
 	{
-		printf("here4\n");
 		free(line);
-		printf("after4\n");
 		line = get_next_line(fd);
 	}
 	while (line)
@@ -245,13 +236,14 @@ bool	read_map(int fd, t_data *data)
 bool	get_input(t_data *data, char *path_name)
 {
 	int	fd;
-	char *line;
 
+	if (ft_strncmp(path_name + ft_strlen(path_name) - 4, ".cub", 5))
+		return (error_message_bool("Argument is not a \".cub\" file\n", false));
 	fd = open(path_name, O_RDONLY);
 	if (fd < 0)
 		return (error_message_bool(path_name, true));
 	if (read_input_file(data, fd) == false)
-		return (error_message_bool("cub file not properly formated!\n", false));
+		return (error_message_bool("Issue with cub file\n", false));
 	// get_map();
 	if (read_map(fd, data) == false)
 		return (false);
@@ -265,6 +257,5 @@ bool	get_input(t_data *data, char *path_name)
 
 	// line = get_next_line(fd);
 	// line = get_next_line(fd);
-	// printf("%s",line);
 	return (true);
 }

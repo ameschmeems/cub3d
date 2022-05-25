@@ -3,7 +3,7 @@ SO ./test.xpm
 WE ./test.xpm
 
 
-EA ./test.xp
+EA ./test.xpm
 F 220,100,0
 
 C 225,30,0

@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/18 18:32:25 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:11:05 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	check_rgb_line_util(char *line, int i)
 {
 	int		j;
 	int		y;
-	char	*temp;
 
 	y = 0;
 	while (line[i])
@@ -57,7 +56,6 @@ bool	check_rgb_line(char *line)
 	int		i;
 	int		y;
 	int		j;
-	char	*temp;
 
 	i = 1;
 	j = 1;

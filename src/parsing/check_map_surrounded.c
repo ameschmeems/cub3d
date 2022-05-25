@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 13:44:18 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:06:54 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,11 @@ bool	check_for_surround_horizontal(char **map)
 			if (map[y_c][x_c] == 0)
 				break ;
 			if (map[y_c][x_c] != '1')
-			{
-				printf("hello '%s'", map[y_c]);
-				printf("case 1: %d %d\n", x_c, y_c);
 				return (false);
-			}
 			while (map[y_c][x_c] != ' ' && map[y_c][x_c] != 0)
 				x_c++;
 			if (map[y_c][x_c - 1] != '1')
-			{
-				printf("case 2: %d %d\n", x_c, y_c);
 					return (false);
-			}
 		}
 		y_c++;
 	}

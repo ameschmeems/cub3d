@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 19:14:26 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:07:44 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,8 @@ t_data	*init(char *path)
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
 	//map here maybe
-	printf("here\n");
 	if (get_input(data, path) == false)
-	{
 		return(NULL);
-	}
-	printf("after\n");
 	if (!check_player_start(data->map))
 	{
 		error_message_bool("Invalid amount of player positions", false);

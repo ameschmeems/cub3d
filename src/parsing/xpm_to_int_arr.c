@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 15:37:36 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:14:02 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*skip_lines_xpm(int fd)
 {
 	char	*line;
-	int		i;
 
 	line = get_next_line(fd);
 	while (line[0] != '"')
@@ -50,7 +49,6 @@ void	fill_var_arrays(t_xpm_data *data, int fd)
 {
 	char	*line;
 	int		i;
-	char	*temp;
 
 	i = 0;
 	line = get_next_line(fd);
@@ -92,11 +90,10 @@ int	find_ind(char *line, t_xpm_data *tex_data)
 	return (0);
 }
 
-int	**fill_texture_array(t_xpm_data *tex_data, t_data *data, int fd)
+int	**fill_texture_array(t_xpm_data *tex_data, int fd)
 {
 	int		y;
 	int		x;
-	int		ind;
 	int		**out;
 	char	*line;
 
@@ -176,8 +173,6 @@ void	distribute_into_struct(char c, int size, int **arr, t_data *data)
 
 char	*get_xpm_path(char *path)
 {
-	int	i;
-
 	path += 2;
 	while (path[0] == ' ')
 		path++;
@@ -193,7 +188,6 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	int			**arr;
 
 	path = get_xpm_path(path);
-	printf("XDLOL\n");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return(error_message_bool(path + 2, true));
@@ -202,8 +196,7 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	if (text_data.size == -1)
 		return (false);
 	fill_var_arrays(&text_data, fd);
-	arr = fill_texture_array(&text_data, data, fd);
-	printf("%p\n", text_data.value);
+	arr = fill_texture_array(&text_data,fd);
 	free(text_data.value);
 	free_2d_array(text_data.code);
 	distribute_into_struct(c, text_data.size, arr, data);

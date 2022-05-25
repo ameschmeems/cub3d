@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:57:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/23 13:34:54 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:12:20 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	u_hextoi(char	*hex)
 	int		i;
 	int		sign;
 	int		out;
-	char	*hex_dig;
 
 	i = 0;
 	sign = 1;
