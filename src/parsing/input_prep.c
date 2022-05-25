@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:43:32 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 00:35:02 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	read_input_file(t_data *data, int fd)
 		{
 			if (xpm_to_int_arr(l, l[0], data) == false)
 				return (false);
-			}
 			i++;
 		}
 		else if (l[0] == 'F' || l[0] == 'C')
