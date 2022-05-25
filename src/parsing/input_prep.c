@@ -48,7 +48,10 @@ bool	read_input_file(t_data *data, int fd)
 		if (line[0] == 'N' || line[0] == 'E' || line[0] == 'S' || line[0] == 'W')
 		{
 			if (xpm_to_int_arr(line, line[0], data) == false)
+			{
+				free(line);
 				return (false);
+			}
 			i++;
 		}
 		else if (line[0] == 'F' || line[0] == 'C')
@@ -57,11 +60,15 @@ bool	read_input_file(t_data *data, int fd)
 			i++;
 		}
 		else if (ft_strlen(line) > 1)
+		{
+			free(line);
 			return (false);
+		}
 		usleep(5);
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	if (i != 6)
 		return (false);
 	return (true);
