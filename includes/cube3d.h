@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
 /*   Updated: 2022/05/25 14:10:44 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -25,8 +25,8 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define MAP_W 160
-# define MAP_H 160
+# define MAP_W 150
+# define MAP_H 150
 
 enum
 {
@@ -60,13 +60,22 @@ enum
 	LEFT
 };
 
+enum
+{
+	NORTH,
+	EAST,
+	WEST,
+	SOUTH
+};
+
 typedef struct s_vector
 {
 	double	x;
 	double	y;
 }				t_vector;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -87,12 +96,14 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	int			start_dir;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	perp_dir;
 	t_vector	plane;
 	t_vector	ray_dir;
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	t_vector	v;
 	t_img		map_img;
 	t_img		fps;
 	char		**map;
@@ -102,12 +113,39 @@ typedef struct s_data
 	int			east_size;
 	int			south_size;
 	int			west_size;
-	int 		**place_holder_east;
-	int			**place_holder_south;
-	int			**place_holder_west;	
 	int			**place_holder_north;
-
+	int			**place_holder_east;
+	int			**place_holder_south;
+	int			**place_holder_west;
+	double		camera_x;
+	double		perp_wall_dist;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			prev_start;
+	int			pixel_x;
+	int			pixel_y;
+	int			rev;
 }				t_data;
+
+int		arr_len(char **s);
+void	normalize_vector(t_vector *dir, double len);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	draw_line(t_data *data, int x);
+void	raycaster(t_data *data, int amount);
+t_data	*init(void);
+void	render(t_data *data);
+int		x_close(void *ptr);
+int		key_handler(int keycode, void *ptr);
+int		collision_detection(t_data *data, int state);
+int		out_of_bounds(t_data *data, int i, int j);
+int		get_pixel(t_data *data, int i);
 
 int		arr_len(char **s);
 bool	get_input(t_data *data, char *path_name);

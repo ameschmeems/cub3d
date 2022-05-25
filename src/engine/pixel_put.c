@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 14:39:36 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 14:43:20 by kpucylo          ###   ########.fr       */
+/*   Created: 2022/05/18 15:27:16 by kpucylo           #+#    #+#             */
+/*   Updated: 2022/05/18 15:47:05 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cube3d.h"
 
-int	arr_len(char **s)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	int	i;
+	char	*dst;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

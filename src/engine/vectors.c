@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 12:43:05 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/18 13:27:44 by kpucylo          ###   ########.fr       */
+/*   Created: 2022/05/18 14:59:20 by kpucylo           #+#    #+#             */
+/*   Updated: 2022/05/18 15:47:16 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cube3d.h"
 
-int	main(int argc, char **argv)
+void	normalize_vector(t_vector *dir, double len)
 {
-	t_data	*data;
+	double	v;
+	double	f;
+
+	v = sqrt(dir->x * dir->x + dir->y * dir->y);
+	f = len / v;
+	dir->x *= f;
+	dir->y *= f;
 }

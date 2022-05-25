@@ -1,26 +1,37 @@
 NAME	:=	cub3d
 
-SRCS	:=	src/main.c
+SRCS	:=	src/main.c \
+			src/engine/init.c \
+			src/engine/pixel_put.c \
+			src/engine/raycasting.c \
+			src/engine/rendering.c \
+			src/engine/utils.c \
+			src/engine/vectors.c \
+			src/engine/collisions.c \
+			src/engine/event_handling.c \
+			src/engine/textures.c
 
 OBJS	:=	${SRCS:.c=.o}
 
 CC		:=	gcc
 
-CFLAGS	:=	
+CFLAGS	:=	-Wall -Wextra -Wextra -O3
 
 all:		${NAME}
 
 %.o: %.c
-		${CC}  -Imlx -c $< -o $@
+		${CC} ${CFLAGS} -Imlx -c $< -o $@
 
 ${NAME}:	${OBJS}
 		@make -C ./libft
-		${CC} ${OBJS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+		${CC} ${OBJS} ${CFLAGS} libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 clean:
+		@make -C ./libft clean
 		rm -f ${OBJS} ${FPS_OBJS}
 
 fclean:		clean
+		@make -C ./libft fclean
 		rm -f ${NAME} ${FPS_NAME}
 
 re:			fclean all
