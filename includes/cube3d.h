@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 19:12:15 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:52:26 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,20 @@ void	print_2d_int_array(int **arr, int size);
 bool	check_for_surround_vertical(char **map);
 bool	check_for_surround_horizontal(char **map);
 void	free_stuff(t_data *data);
+bool	check_for_illegal_chars(char **map);
+char	**add_after_string(char **arr, char *new_el);
+void	free_2d_int_array(int **arr, int size);
+bool	xpm_to_int_arr(char *path, char c, t_data *data);
+void	distribute_into_struct(char c, int size, int **arr, t_data *data);
+char	*get_xpm_path(char *path);
+bool	xpm_to_int_arr(char *path, char c, t_data *data);
+char	*skip_lines_xpm(int fd);
+void	fill_texture_size(char *line, t_xpm_data *data);
+void	fill_var_arrays(t_xpm_data *data, int fd);
+int		find_ind(char *line, t_xpm_data *tex_data);
+int		**fill_texture_array(t_xpm_data *tex_data, int fd);
+
+
+
 
 #endif

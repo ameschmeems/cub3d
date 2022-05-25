@@ -15,7 +15,8 @@ SRCS	:=	src/main.c \
 			src/parsing/input_prep.c\
 			src/parsing/utils.c\
 			src/parsing/check_map_surrounded.c\
-			src/parsing/xpm_to_int_arr.c
+			src/parsing/xpm_to_int_arr.c\
+			src/parsing/xpm_to_int_arr_utils.c
 
 OBJS	:=	${SRCS:.c=.o}
 

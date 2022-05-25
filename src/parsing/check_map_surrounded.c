@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 20:06:54 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:44:14 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	check_for_surround_horizontal(char **map)
 			while (map[y_c][x_c] != ' ' && map[y_c][x_c] != 0)
 				x_c++;
 			if (map[y_c][x_c - 1] != '1')
-					return (false);
+				return (false);
 		}
 		y_c++;
 	}
@@ -66,7 +66,24 @@ bool	check_for_surround_vertical(char **map)
 	return (true);
 }
 
-// bool	check_for_illegal_characters(char **map, int x, int y)
-// {
-	
-// }
+bool	check_for_illegal_chars(char **map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] != '1' && map[y][x] != ' ' && map[y][x] != '0'
+				&& map[y][x] != 'N' && map[y][x] != 'E' && map[y][x] != 'S'
+				&& map[y][x] != 'W')
+				return (false);
+			x++;
+		}
+		y++;
+	}
+	return (true);
+}

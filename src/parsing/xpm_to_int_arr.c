@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 20:14:02 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:53:02 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*skip_lines_xpm(int fd)
 	while (line[0] != '"')
 	{
 		free(line);
-		line =get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	return (line);
 }
@@ -41,8 +41,8 @@ void	fill_texture_size(char *line, t_xpm_data *data)
 	data->cpp = ft_atoi(arr[3]);
 	free_2d_array(arr);
 	free(line);
-	data->code = ft_calloc(sizeof(char	*), data->colours + 1);
-	data->value = ft_calloc(sizeof(int), data->colours +1 );
+	data->code = ft_calloc(sizeof(char *), data->colours + 1);
+	data->value = ft_calloc(sizeof(int), data->colours + 1);
 }
 
 void	fill_var_arrays(t_xpm_data *data, int fd)
@@ -61,19 +61,6 @@ void	fill_var_arrays(t_xpm_data *data, int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
-}
-
-void	print_int_arr(int *arr, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		printf("%d\n", arr[i]);
-		i++;
-	}
-	printf("\nint array i == %d", i);
 }
 
 int	find_ind(char *line, t_xpm_data *tex_data)
@@ -106,107 +93,12 @@ int	**fill_texture_array(t_xpm_data *tex_data, int fd)
 		x = 0;
 		while (x < tex_data->size)
 		{
-			out[y][x] = tex_data->value[find_ind(line + 1 + x * tex_data->cpp, tex_data)];
-			x++;	
+			out[y][x] = tex_data->value[find_ind(line + 1
+					+ x * tex_data->cpp, tex_data)];
+			x++;
 		}
 		y++;
 		free(line);
 	}
 	return (out);
 }
-
-void	print_2d_int_array(int **arr, int size)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < size)
-	{
-		x = 0;
-		while (x < size)
-		{
-			printf("%d, ", arr[y][x]);
-			x++;	
-		}
-		printf("\n");
-		y++;
-	}
-}
-
-void	free_2d_int_array(int **arr, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(arr[i]);	
-		i++;
-	}
-	free(arr);
-}
-
-void	distribute_into_struct(char c, int size, int **arr, t_data *data)
-{
-	if (c == 'N')
-	{
-		data->north_size = size;
-		data->place_holder_north = arr;
-	}
-	else if (c == 'E')
-	{
-		data->east_size = size;
-		data->place_holder_east = arr;
-	}
-	else if (c == 'S')
-	{
-		data->south_size = size;
-		data->place_holder_south = arr;
-	}
-	else if (c == 'W')
-	{
-		data->west_size = size;
-		data->place_holder_west = arr;
-	}
-}
-
-char	*get_xpm_path(char *path)
-{
-	path += 2;
-	while (path[0] == ' ')
-		path++;
-	path[ft_strlen(path) - 1] = 0;
-	return (path);
-}
-
-bool	xpm_to_int_arr(char *path, char c, t_data *data)
-{
-	int			fd;
-	char		*line;
-	t_xpm_data	text_data;
-	int			**arr;
-
-	path = get_xpm_path(path);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		return(error_message_bool(path + 2, true));
-	line = skip_lines_xpm(fd);
-	fill_texture_size(line, &text_data);
-	if (text_data.size == -1)
-		return (false);
-	fill_var_arrays(&text_data, fd);
-	arr = fill_texture_array(&text_data,fd);
-	free(text_data.value);
-	free_2d_array(text_data.code);
-	distribute_into_struct(c, text_data.size, arr, data);
-	return (true);
-}
-
-// int main()
-// {
-// 	int **arr;
-// 	t_data data;
-// 	xpm_to_int_arr("./test.xpm", 'N', &data);
-// 	free_2d_int_array(data.place_holder_north, data.north_size);
-// }
