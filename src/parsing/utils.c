@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:57:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 13:47:26 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:28:10 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	add_nl(char **map)
 	ft_strlcpy(out, map[i], ft_strlen(map[i]) + 1);
 	free(map[i]);
 	map[i] = out;
-	map[i][ft_strlen(map[i]) + 1] = '\n';
+	map[i][ft_strlen(map[i]) - 1] = '\n';
 }

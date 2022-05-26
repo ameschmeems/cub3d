@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 14:07:15 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/26 15:40:43 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ bool	read_map(int fd, t_data *data)
 	if (check_for_surround_vertical(map) == false)
 		return (error_message_bool("Map isn't enclosed vertically.\n", false));
 	if (check_for_surround_horizontal(map) == false)
-		return (error_message_bool("Map isn't enclosed\
-		 horizontically.\n", false));
+		return (error_message_bool("Map isn't enclosed \
+horizontally.\n", false));
 	data->map = map;
 	return (true);
 }

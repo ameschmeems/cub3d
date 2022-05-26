@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_to_int_arr_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:49:25 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:49:39 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:40:40 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	path = get_xpm_path(path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (error_message_bool(path + 2, true));
+		return (error_message_bool(path, true));
 	line = skip_lines_xpm(fd);
 	fill_texture_size(line, &text_data);
 	if (text_data.size == -1)
