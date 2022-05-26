@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:43:32 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:08:05 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,8 @@ int	read_input_file(t_data *data, int fd)
 	return (i);
 }
 
-char	*fill_map_with_spaces_util(char	*line, int size)
+char	*fill_map_with_spaces_util(char	*line, int size, char *out, int i)
 {
-	char	*out;
-	int		i;
-
 	if ((int)ft_strlen(line) > size)
 	{
 		line[size] = 0;
@@ -53,8 +50,10 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 	}
 	else if ((int)ft_strlen(line) == size)
 	{
+		if (line[size - 1] != '\n')
+			return (line);
 		line[size -1] = ' ';
-		line[size -1] = '\0';
+		line[size] = '\0';
 		return (line);
 	}
 	else
@@ -62,6 +61,8 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 		out = ft_calloc(sizeof(char), size + 1);
 		ft_strlcpy(out, line, size);
 		i = ft_strlen(out) - 1;
+		if (line[i] != '\n')
+			i++;
 		while (i < size)
 			out[i++] = ' ';
 		free(line);
@@ -88,9 +89,23 @@ void	fill_map_with_spaces(char **map)
 	x -= 1;
 	while (map[i])
 	{
-		map[i] = fill_map_with_spaces_util(map[i], x);
+		map[i] = fill_map_with_spaces_util(map[i], x, "", 0);
 		i++;
 	}
+}
+
+void	add_nl(char **map)
+{
+	int		i;
+	char	*out;
+
+	i = 0;
+	while (map[i])
+		i++;
+	i--;
+	out = ft_calloc(sizeof(char), ft_strlen(map[i] + 2));
+	ft_strlcpy(out, map[i], ft_strlen(map[i]));
+	map[i][ft_strlen(map[i])] = '\n';
 }
 
 bool	read_map(int fd, t_data *data)
@@ -110,6 +125,8 @@ bool	read_map(int fd, t_data *data)
 		map = add_after_string(map, line);
 		line = get_next_line(fd);
 	}
+	add_nl(map);
+	// print_2d_array(map, 1);
 	fill_map_with_spaces(map);
 	if (check_for_illegal_chars(map) == false)
 		return (error_message_bool("Illegal Characters.\n", false));
