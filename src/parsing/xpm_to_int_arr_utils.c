@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_to_int_arr_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:49:25 by cerdelen          #+#    #+#             */
 /*   Updated: 2022/05/26 17:19:45 by cerdelen         ###   ########.fr       */
@@ -72,7 +72,7 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 		return (error_message_bool("Texture is not a .xpm File!\n", false));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (error_message_bool(path + 2, true));
+		return (error_message_bool(path, true));
 	line = skip_lines_xpm(fd);
 	fill_texture_size(line, &text_data);
 	if (text_data.size == -1)

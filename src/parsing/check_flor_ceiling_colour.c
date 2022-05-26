@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_flor_ceiling_colour.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
 /*   Updated: 2022/05/26 16:13:09 by cerdelen         ###   ########.fr       */
@@ -104,8 +104,8 @@ bool	set_colour_f_and_c(char *line, t_data *data)
 	if (line[0] == 'F')
 	{
 		if (check_rgb_line(line) == false)
-			return (error_message_bool("Floor colour is\
-			 not formatted right!\n", false));
+			return (error_message_bool("Floor colour is \
+not formatted right!\n", false));
 		data->f_colour = get_colour(line);
 		if (data->f_colour < 0)
 			return (false);
@@ -113,8 +113,8 @@ bool	set_colour_f_and_c(char *line, t_data *data)
 	else if (line[0] == 'C')
 	{
 		if (check_rgb_line(line) == false)
-			return (error_message_bool("Ceiling colour\
-			 is not formatted right!\n", false));
+			return (error_message_bool("Ceiling colour \
+is not formatted right!\n", false));
 		data->c_colour = get_colour(line);
 		if (data->c_colour < 0)
 			return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_to_int_arr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:33 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:53:02 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:40:58 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	find_ind(char *line, t_xpm_data *tex_data)
 	i = 0;
 	while (i < tex_data->colours)
 	{
-		if (ft_strncmp(line, tex_data->code[i], 2) == 0)
+		if (ft_strncmp(line, tex_data->code[i], tex_data->cpp) == 0)
 			return (i);
 		i++;
 	}

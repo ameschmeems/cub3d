@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   input_prep.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
 /*   Updated: 2022/05/26 17:20:18 by cerdelen         ###   ########.fr       */
