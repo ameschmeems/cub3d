@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/26 16:20:58 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:51:32 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ t_data	*init(char *path)
 	data->tex_east = false;
 	data->tex_west = false;
 	data->map = NULL;
+	data->f_colour = -1;
+	data->c_colour = -1;
 	if (get_input(data, path) == false)
 	{
 		free_stuff_2(data);
