@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/26 15:45:29 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/26 16:20:58 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,9 @@ bool	check_player_start(char **map)
 	return (true);
 }
 
-void	free_image_arr(int **array, int size)
+void	init_utils(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	while (++i < size)
-		free(array[i]);
-	free(array);
-}
-
-t_data	*init(char *path)
-{
-	t_data	*data;
-
-	data = malloc(sizeof(t_data));
-	data->mlx = mlx_init();
+		data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->map_img.img = mlx_new_image(data->mlx, MAP_W, MAP_H);
 	data->map_img.addr = mlx_get_data_addr(data->map_img.img, \
@@ -112,8 +99,24 @@ t_data	*init(char *path)
 	data->fps.addr = mlx_get_data_addr(data->fps.img, \
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
+}
+
+t_data	*init(char *path)
+{
+	t_data	*data;
+
+	data = malloc(sizeof(t_data));
+	data->tex_north = false;
+	data->tex_south = false;
+	data->tex_east = false;
+	data->tex_west = false;
+	data->map = NULL;
 	if (get_input(data, path) == false)
+	{
+		free_stuff_2(data);
 		return (NULL);
+	}
+	init_utils(data);
 	if (!check_player_start(data->map))
 	{
 		error_message_bool("Invalid amount of player positions\n", false);

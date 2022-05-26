@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 15:38:22 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/26 16:13:09 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_rgb_line_util(char *line, int i)
 		j = i;
 		while (ft_isdigit(line[i]))
 			i++;
-		if (i - j > 3)
+		if (i - j > 3 || i - j < 1)
 			return (-1);
 		if (check_rgb_line_util2(line, i, j) == -1)
 			return (-1);

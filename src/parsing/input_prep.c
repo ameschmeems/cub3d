@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 15:40:43 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/26 17:20:18 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int	read_input_file(t_data *data, int fd)
 		if ((l[0] == 'N' || l[0] == 'E' || l[0] == 'S' || l[0] == 'W') && ++i)
 		{
 			if (xpm_to_int_arr(l, l[0], data) == false)
-				return (false);
+				return (free_str_and_return_false(l));
 		}
 		else if ((l[0] == 'F' || l[0] == 'C') && ++i)
 		{
 			if (set_colour_f_and_c(l, data) == false)
-				return (false);
+				return (free_str_and_return_false(l));
 		}
 		else if (ft_strlen(l) > 1)
-			return (false);
+			return (free_str_and_return_false(l));
 		free(l);
 		l = get_next_line(fd);
 	}
@@ -112,14 +112,14 @@ bool	read_map(int fd, t_data *data)
 	}
 	add_nl(map);
 	fill_map_with_spaces(map);
+	data->map = map;
 	if (check_for_illegal_chars(map) == false)
 		return (error_message_bool("Illegal Characters.\n", false));
 	if (check_for_surround_vertical(map) == false)
 		return (error_message_bool("Map isn't enclosed vertically.\n", false));
 	if (check_for_surround_horizontal(map) == false)
-		return (error_message_bool("Map isn't enclosed \
-horizontally.\n", false));
-	data->map = map;
+		return (error_message_bool("Map isn't enclosed\
+ horizontally.\n", false));
 	return (true);
 }
 
@@ -133,7 +133,8 @@ bool	get_input(t_data *data, char *path_name)
 	if (fd < 0)
 		return (error_message_bool(path_name, true));
 	if (read_input_file(data, fd) != 6)
-		return (error_message_bool("Issue with cub file\n", false));
+		return (error_message_bool
+			("Not enough Textures &/ floor/ceiling colour\n", false));
 	if (read_map(fd, data) == false)
 		return (false);
 	return (true);

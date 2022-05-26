@@ -6,7 +6,7 @@
 /*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:49:25 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 15:40:40 by kpucylo          ###   ########.fr       */
+/*   Updated: 2022/05/26 17:19:45 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ char	*get_xpm_path(char *path)
 	return (path);
 }
 
+void	set_bool_tex(char c, t_data *data)
+{
+	if (c == 'N')
+		data->tex_north = true;
+	else if (c == 'S')
+		data->tex_south = true;
+	else if (c == 'E')
+		data->tex_east = true;
+	else if (c == 'W')
+		data->tex_west = true;
+}
+
 bool	xpm_to_int_arr(char *path, char c, t_data *data)
 {
 	int			fd;
@@ -52,7 +64,12 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	t_xpm_data	text_data;
 	int			**arr;
 
+	if ((c == 'N' && data->tex_north) || (c == 'S' && data->tex_south)
+		|| (c == 'E' && data->tex_east) || (c == 'W' && data->tex_west))
+		return (error_message_bool("Duplicated direction\n", false));
 	path = get_xpm_path(path);
+	if (ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 5))
+		return (error_message_bool("Texture is not a .xpm File!\n", false));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (error_message_bool(path, true));
@@ -65,5 +82,6 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	free(text_data.value);
 	free_2d_array(text_data.code);
 	distribute_into_struct(c, text_data.size, arr, data);
+	set_bool_tex(c, data);
 	return (true);
 }
