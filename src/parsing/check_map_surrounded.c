@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_surrounded.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpucylo <kpucylo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:19:56 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 12:48:23 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:26:19 by kpucylo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ bool	check_for_surround_vertical(char **map)
 	int	x_c;
 
 	x_c = 0;
-	print_2d_array(map, 1);
 	while (map[0][x_c] != 0)
 	{
 		y_c = 0;
