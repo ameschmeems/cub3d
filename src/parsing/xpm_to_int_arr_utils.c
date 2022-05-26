@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:49:25 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 17:05:05 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 17:19:45 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ bool	xpm_to_int_arr(char *path, char c, t_data *data)
 	t_xpm_data	text_data;
 	int			**arr;
 
+	if ((c == 'N' && data->tex_north) || (c == 'S' && data->tex_south)
+		|| (c == 'E' && data->tex_east) || (c == 'W' && data->tex_west))
+		return (error_message_bool("Duplicated direction\n", false));
 	path = get_xpm_path(path);
 	if (ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 5))
-		return (error_message_bool("Texture is not a .xpm File!", false));
+		return (error_message_bool("Texture is not a .xpm File!\n", false));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (error_message_bool(path + 2, true));

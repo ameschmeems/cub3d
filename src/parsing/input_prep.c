@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 16:55:36 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 17:20:18 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ bool	read_map(int fd, t_data *data)
 		line = get_next_line(fd);
 	}
 	add_nl(map);
-	print_2d_array(map, 1);
 	fill_map_with_spaces(map);
 	data->map = map;
 	if (check_for_illegal_chars(map) == false)
@@ -134,7 +133,8 @@ bool	get_input(t_data *data, char *path_name)
 	if (fd < 0)
 		return (error_message_bool(path_name, true));
 	if (read_input_file(data, fd) != 6)
-		return (error_message_bool("Issue with cub file\n", false));
+		return (error_message_bool
+			("Not enough Textures &/ floor/ceiling colour\n", false));
 	if (read_map(fd, data) == false)
 		return (false);
 	return (true);
