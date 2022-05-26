@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 13:08:05 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:40:38 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,22 @@ int	read_input_file(t_data *data, int fd)
 	l = get_next_line(fd);
 	while (l && i < 6)
 	{
-		if (l[0] == 'N' || l[0] == 'E' || l[0] == 'S' || l[0] == 'W')
+		if ((l[0] == 'N' || l[0] == 'E' || l[0] == 'S' || l[0] == 'W') && ++i)
 		{
 			if (xpm_to_int_arr(l, l[0], data) == false)
 				return (false);
-			i++;
 		}
-		else if (l[0] == 'F' || l[0] == 'C')
+		else if ((l[0] == 'F' || l[0] == 'C') && ++i)
 		{
 			if (set_colour_f_and_c(l, data) == false)
 				return (false);
-			i++;
 		}
 		else if (ft_strlen(l) > 1)
 			return (false);
 		free(l);
 		l = get_next_line(fd);
 	}
+	free(l);
 	return (i);
 }
 
@@ -103,9 +102,11 @@ void	add_nl(char **map)
 	while (map[i])
 		i++;
 	i--;
-	out = ft_calloc(sizeof(char), ft_strlen(map[i] + 2));
-	ft_strlcpy(out, map[i], ft_strlen(map[i]));
-	map[i][ft_strlen(map[i])] = '\n';
+	out = ft_calloc(sizeof(char), ft_strlen(map[i]) + 3);
+	ft_strlcpy(out, map[i], ft_strlen(map[i]) + 1);
+	free(map[i]);
+	map[i] = out;
+	map[i][ft_strlen(map[i]) + 1] = '\n';
 }
 
 bool	read_map(int fd, t_data *data)
