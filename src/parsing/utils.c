@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:57:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 13:47:26 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:52:28 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	add_nl(char **map)
 {
 	int		i;
 	char	*out;
+	int		len;
 
 	i = 0;
 	while (map[i])
@@ -51,7 +52,8 @@ void	add_nl(char **map)
 	i--;
 	out = ft_calloc(sizeof(char), ft_strlen(map[i]) + 3);
 	ft_strlcpy(out, map[i], ft_strlen(map[i]) + 1);
+	len = ft_strlen(map[i]);
 	free(map[i]);
 	map[i] = out;
-	map[i][ft_strlen(map[i]) + 1] = '\n';
+	map[i][len] = '\n';
 }

@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/26 13:48:35 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:15:33 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ typedef struct s_data
 	t_vector	v;
 	t_img		map_img;
 	t_img		fps;
+	bool		tex_south;
+	bool		tex_west;
+	bool		tex_east;
+	bool		tex_north;
 	char		**map;
 	int			f_colour;
 	int			c_colour;
@@ -173,8 +177,9 @@ int		find_ind(char *line, t_xpm_data *tex_data);
 int		**fill_texture_array(t_xpm_data *tex_data, int fd);
 void	add_nl(char **map);
 void	free_image_arr(int **array, int size);
-
-
+void	free_image_arr(int **array, int size);
+void	free_stuff_2(t_data *data);
+bool	free_str_and_return_false(char *s1);
 
 
 #endif
