@@ -6,7 +6,11 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/26 00:35:02 by cerdelen         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/26 13:47:22 by cerdelen         ###   ########.fr       */
+>>>>>>> cer2
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +25,27 @@ int	read_input_file(t_data *data, int fd)
 	l = get_next_line(fd);
 	while (l && i < 6)
 	{
-		if (l[0] == 'N' || l[0] == 'E' || l[0] == 'S' || l[0] == 'W')
+		if ((l[0] == 'N' || l[0] == 'E' || l[0] == 'S' || l[0] == 'W') && ++i)
 		{
 			if (xpm_to_int_arr(l, l[0], data) == false)
 				return (false);
-			i++;
 		}
-		else if (l[0] == 'F' || l[0] == 'C')
+		else if ((l[0] == 'F' || l[0] == 'C') && ++i)
 		{
 			if (set_colour_f_and_c(l, data) == false)
 				return (false);
-			i++;
 		}
 		else if (ft_strlen(l) > 1)
 			return (false);
 		free(l);
 		l = get_next_line(fd);
 	}
+	free(l);
 	return (i);
 }
 
-char	*fill_map_with_spaces_util(char	*line, int size)
+char	*fill_map_with_spaces_util(char	*line, int size, char *out, int i)
 {
-	char	*out;
-	int		i;
-
 	if ((int)ft_strlen(line) > size)
 	{
 		line[size] = 0;
@@ -53,8 +53,10 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 	}
 	else if ((int)ft_strlen(line) == size)
 	{
+		if (line[size - 1] != '\n')
+			return (line);
 		line[size -1] = ' ';
-		line[size -1] = '\0';
+		line[size] = '\0';
 		return (line);
 	}
 	else
@@ -62,6 +64,8 @@ char	*fill_map_with_spaces_util(char	*line, int size)
 		out = ft_calloc(sizeof(char), size + 1);
 		ft_strlcpy(out, line, size);
 		i = ft_strlen(out) - 1;
+		if (line[i] != '\n')
+			i++;
 		while (i < size)
 			out[i++] = ' ';
 		free(line);
@@ -88,7 +92,7 @@ void	fill_map_with_spaces(char **map)
 	x -= 1;
 	while (map[i])
 	{
-		map[i] = fill_map_with_spaces_util(map[i], x);
+		map[i] = fill_map_with_spaces_util(map[i], x, "", 0);
 		i++;
 	}
 }
@@ -110,6 +114,7 @@ bool	read_map(int fd, t_data *data)
 		map = add_after_string(map, line);
 		line = get_next_line(fd);
 	}
+	add_nl(map);
 	fill_map_with_spaces(map);
 	if (check_for_illegal_chars(map) == false)
 		return (error_message_bool("Illegal Characters.\n", false));

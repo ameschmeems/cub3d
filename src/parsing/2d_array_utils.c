@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:57:43 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/25 22:48:21 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:04:51 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	print_2d_array(char	**arr, int fd)
 		{
 			ft_putstr_fd(arr[i], fd);
 			if (arr[i][ft_strlen(arr[i]) - 1] != '\n')
-				ft_putchar_fd('\n', fd);
+				ft_putstr_fd("\'\n", fd);
+			else
+				ft_putstr_fd("\'", fd);
 			i++;
 		}
 	}

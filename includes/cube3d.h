@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 22:52:26 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:48:35 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ void	fill_texture_size(char *line, t_xpm_data *data);
 void	fill_var_arrays(t_xpm_data *data, int fd);
 int		find_ind(char *line, t_xpm_data *tex_data);
 int		**fill_texture_array(t_xpm_data *tex_data, int fd);
+void	add_nl(char **map);
+void	free_image_arr(int **array, int size);
 
 
 

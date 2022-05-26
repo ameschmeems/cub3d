@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:49:09 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/25 20:07:44 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:45:51 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,6 @@ void	free_image_arr(int **array, int size)
 	free(array);
 }
 
-void	free_stuff(t_data *data)
-{
-	free_2d_array(data->map);
-	free_image_arr(data->place_holder_east, data->east_size);
-	free_image_arr(data->place_holder_west, data->west_size);
-	free_image_arr(data->place_holder_south, data->south_size);
-	free_image_arr(data->place_holder_north, data->north_size);
-	mlx_destroy_image(data->mlx, data->map_img.img);
-	mlx_destroy_image(data->mlx, data->fps.img);
-	mlx_destroy_window(data->mlx, data->win);
-}
-
 t_data	*init(char *path)
 {
 	t_data	*data;
@@ -124,9 +112,8 @@ t_data	*init(char *path)
 	data->fps.addr = mlx_get_data_addr(data->fps.img, \
 		&data->fps.bits_per_pixel, \
 		&data->fps.line_length, &data->fps.endian);
-	//map here maybe
 	if (get_input(data, path) == false)
-		return(NULL);
+		return (NULL);
 	if (!check_player_start(data->map))
 	{
 		error_message_bool("Invalid amount of player positions", false);
