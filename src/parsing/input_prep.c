@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 13:40:38 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:47:22 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,6 @@ void	fill_map_with_spaces(char **map)
 	}
 }
 
-void	add_nl(char **map)
-{
-	int		i;
-	char	*out;
-
-	i = 0;
-	while (map[i])
-		i++;
-	i--;
-	out = ft_calloc(sizeof(char), ft_strlen(map[i]) + 3);
-	ft_strlcpy(out, map[i], ft_strlen(map[i]) + 1);
-	free(map[i]);
-	map[i] = out;
-	map[i][ft_strlen(map[i]) + 1] = '\n';
-}
-
 bool	read_map(int fd, t_data *data)
 {
 	char	*line;
@@ -127,7 +111,6 @@ bool	read_map(int fd, t_data *data)
 		line = get_next_line(fd);
 	}
 	add_nl(map);
-	// print_2d_array(map, 1);
 	fill_map_with_spaces(map);
 	if (check_for_illegal_chars(map) == false)
 		return (error_message_bool("Illegal Characters.\n", false));
