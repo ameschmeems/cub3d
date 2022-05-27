@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/26 16:15:33 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:35:53 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ enum
 	WEST,
 	SOUTH
 };
+
+typedef struct s_
 
 typedef struct s_vector
 {

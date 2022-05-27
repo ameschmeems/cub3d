@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:17:46 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 21:54:45 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 22:10:42 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int	get_colour(char *line)
 
 bool	set_colour_f_and_c(char *line, t_data *data)
 {
-	printf("%d\n", data->f_colour);
 	if (line[0] == 'F')
 	{
 		if (data->f_colour != -1)

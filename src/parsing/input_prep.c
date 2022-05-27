@@ -6,11 +6,18 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 21:56:12 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:34:54 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+bool	check_for_doubles(int fd)
+{
+	char	*line;
+
+	
+}
 
 int	read_input_file(t_data *data, int fd)
 {
@@ -129,6 +136,12 @@ bool	get_input(t_data *data, char *path_name)
 
 	if (ft_strncmp(path_name + ft_strlen(path_name) - 4, ".cub", 5))
 		return (error_message_bool("Argument is not a \".cub\" file\n", false));
+	fd = open(path_name, O_RDONLY);
+	if (fd < 0)
+		return (error_message_bool(path_name, true));
+	if (check_for_doubles(fd) == false)
+		return (error_message_bool
+			("Too many things in .cub file\n", false));
 	fd = open(path_name, O_RDONLY);
 	if (fd < 0)
 		return (error_message_bool(path_name, true));
