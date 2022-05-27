@@ -6,7 +6,7 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:43:55 by kpucylo           #+#    #+#             */
-/*   Updated: 2022/05/26 23:35:53 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:35:34 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <math.h>
 # include <stdbool.h>
 # include <fcntl.h>
-
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -68,7 +67,16 @@ enum
 	SOUTH
 };
 
-typedef struct s_
+typedef struct s_checking_doubles
+{
+	bool	north;
+	bool	east;
+	bool	west;
+	bool	south;
+	bool	floor;
+	bool	ceiling;
+	bool	doubles;
+}	t_checking_doubles;
 
 typedef struct s_vector
 {
@@ -182,6 +190,8 @@ void	free_image_arr(int **array, int size);
 void	free_image_arr(int **array, int size);
 void	free_stuff_2(t_data *data);
 bool	free_str_and_return_false(char *s1);
-
+char	*init_double_check(t_checking_doubles *datas, int fd);
+void	check_for_doubles_util(bool *check, t_checking_doubles *data);
+bool	check_for_doubles(int fd);
 
 #endif

@@ -6,18 +6,11 @@
 /*   By: cerdelen <cerdelen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:32:02 by cerdelen          #+#    #+#             */
-/*   Updated: 2022/05/26 23:34:54 by cerdelen         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:35:53 by cerdelen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
-
-bool	check_for_doubles(int fd)
-{
-	char	*line;
-
-	
-}
 
 int	read_input_file(t_data *data, int fd)
 {
@@ -41,9 +34,10 @@ int	read_input_file(t_data *data, int fd)
 		else if (ft_strlen(l) > 1)
 			return (free_str_and_return_false(l));
 		free(l);
+		if (i == 6)
+			break ;
 		l = get_next_line(fd);
 	}
-	free(l);
 	return (i);
 }
 
